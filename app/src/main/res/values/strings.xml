@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Workshop Demo</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">FitMe!</string>
+    <string name="hello_world">Find me shoes that FitMe!</string>
     <string name="action_settings">Settings</string>
 </resources>
