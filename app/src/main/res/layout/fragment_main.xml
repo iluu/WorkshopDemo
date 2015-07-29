@@ -18,12 +18,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:hint="@string/shoe_brand" />
+            android:hint="@string/shoe_brand"
+            android:inputType="text"
+            android:singleLine="true" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/shoe_size" />
+            android:hint="@string/shoe_size"
+            android:maxLength="2"
+            android:inputType="number" />
 
     </LinearLayout>
 
