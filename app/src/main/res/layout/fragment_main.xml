@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/brand_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
@@ -23,6 +24,7 @@
             android:singleLine="true" />
 
         <EditText
+            android:id="@+id/size_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/shoe_size"
