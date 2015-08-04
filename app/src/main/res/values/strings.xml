@@ -2,9 +2,11 @@
     <string name="app_name">FitMe!</string>
     <string name="hello_world">Find me shoes that FitMe!</string>
     <string name="action_settings">Settings</string>
-    <string name="shoe_brand">Add shoes</string>
+    <string name="shoe_brand">Brand</string>
     <string name="shoe_size">Size</string>
     <string name="add_shoes">Add Shoes!</string>
     <string name="new_shoes_added">Added %1$s, size %2$d</string>
     <string name="error_required">Required</string>
+    <string name="new_shoes">New shoes</string>
+    <string name="cancel">Cancel</string>
 </resources>
