@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddShoesDialogFragment extends DialogFragment {
-    private final int INVALID_SIZE = -1;
     private EditText brandInput;
     private EditText sizeInput;
 
@@ -27,12 +26,11 @@ public class AddShoesDialogFragment extends DialogFragment {
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String brand = getBrand(brandInput);
-                int size = getSize(sizeInput);
+                final Shoes shoes = new Shoes(getBrand(brandInput), getSize(sizeInput));
 
-                if (!TextUtils.isEmpty(brand) && size != INVALID_SIZE) {
+                if (shoes.isValid()) {
                     dialog.dismiss();
-                    Toast.makeText(getActivity(), getString(R.string.new_shoes_added, brand, size), Toast.LENGTH_SHORT)
+                    Toast.makeText(getActivity(), getString(R.string.new_shoes_added, shoes.brand, shoes.size), Toast.LENGTH_SHORT)
                             .show();
                 }
             }
@@ -61,7 +59,7 @@ public class AddShoesDialogFragment extends DialogFragment {
         String size = sizeInput.getText().toString();
         if (TextUtils.isEmpty(size)) {
             sizeInput.setError(getString(R.string.error_required));
-            return INVALID_SIZE;
+            return Shoes.INVALID_SIZE;
         }
         return Integer.parseInt(size);
     }
