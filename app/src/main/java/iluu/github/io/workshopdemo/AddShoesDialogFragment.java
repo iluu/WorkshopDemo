@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class AddShoesDialogFragment extends DialogFragment {
+    public interface AddShoesDialogListener {
+        void onShoesAdded(Shoes shoes);
+    }
+
     private EditText brandInput;
     private EditText sizeInput;
+    private AddShoesDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -30,13 +34,18 @@ public class AddShoesDialogFragment extends DialogFragment {
 
                 if (shoes.isValid()) {
                     dialog.dismiss();
-                    Toast.makeText(getActivity(), getString(R.string.new_shoes_added, shoes.brand, shoes.size), Toast.LENGTH_SHORT)
-                            .show();
+                    if (listener != null) {
+                        listener.onShoesAdded(shoes);
+                    }
                 }
             }
         });
 
         return dialog;
+    }
+
+    public void setOnShoesAddedListener(AddShoesDialogListener listener) {
+        this.listener = listener;
     }
 
     private View createInputForm() {

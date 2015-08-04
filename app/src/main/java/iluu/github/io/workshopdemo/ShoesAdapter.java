@@ -33,6 +33,11 @@ public class ShoesAdapter extends RecyclerView.Adapter<ShoesAdapter.ViewHolder> 
         return shoes.size();
     }
 
+    public void addItem(Shoes newShoes) {
+        shoes.add(newShoes);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
 

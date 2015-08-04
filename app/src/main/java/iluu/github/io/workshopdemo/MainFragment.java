@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements AddShoesDialogFragment.AddShoesDialogListener {
     private static final String ADD_SHOES_DIALOG = "add_shoes_dialog";
-    private List<Shoes> shoes;
+    private ShoesAdapter adapter;
 
     public MainFragment() {
     }
@@ -33,16 +33,24 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    private void loadShoeData() {
-        shoes = new ArrayList<>();
+    @Override
+    public void onShoesAdded(Shoes newShoes) {
+        adapter.addItem(newShoes);
+    }
+
+    private List<Shoes> loadShoeData() {
+        List<Shoes> shoes = new ArrayList<>();
         shoes.add(new Shoes("Adidas", 12));
         shoes.add(new Shoes("Calvin Klein", 11));
+        return shoes;
     }
 
     private void initRecyclerView(View view) {
+        adapter = new ShoesAdapter(loadShoeData());
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new ShoesAdapter(shoes));
+        recyclerView.setAdapter(adapter);
     }
 
     private void initActionButton(View view) {
@@ -53,6 +61,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         AddShoesDialogFragment dialog = new AddShoesDialogFragment();
+                        dialog.setOnShoesAddedListener(MainFragment.this);
                         dialog.show(getFragmentManager(), ADD_SHOES_DIALOG);
                     }
                 }
