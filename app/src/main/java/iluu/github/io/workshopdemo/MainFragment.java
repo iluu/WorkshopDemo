@@ -1,12 +1,13 @@
 package iluu.github.io.workshopdemo;
 
+import com.melnykov.fab.FloatingActionButton;
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class MainFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
         final EditText brandInput = (EditText) view.findViewById(R.id.brand_input);
         final EditText sizeInput = (EditText) view.findViewById(R.id.size_input);
-        final Button addButton = (Button) view.findViewById(R.id.add_button);
+        final FloatingActionButton addButton = (FloatingActionButton) view.findViewById(R.id.add_button);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
