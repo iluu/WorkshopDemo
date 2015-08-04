@@ -16,4 +16,9 @@ public class Shoes {
     public boolean isValid() {
         return !TextUtils.isEmpty(brand) && size != INVALID_SIZE;
     }
+
+    @Override
+    public String toString() {
+        return brand + ' ' +'[' + size + ']';
+    }
 }
